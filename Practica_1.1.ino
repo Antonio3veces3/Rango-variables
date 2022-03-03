@@ -5,12 +5,17 @@
 *      FECHA:       24 de febrero de 2022.                                   *
 *      VERSIÓN:     1.0.                                                     *
 *                                                                            *
-*      AUTOR:       Esli Castellanos Berján.                                 *
-*      E-MAIL:      esli_castellanos@ucol.mx.                                *
-*      COMPAÑÍA:    Universidad de Colima - Facultad de Telemática.          *
+*      AUTORES:     Mondragón Delgado Mezly Zahory                           *
+*                   Montaño Ruvalcaba Luis Alberto                           *
+*                    Ramírez Díaz Radames Oswaldo                            *
+*                    Ramírez García Carlos Antonio                           *
+*                    Paz Zamora Alfredo                                      *
 *                                                                            *
-*      uC:          ESP8266
-*      Nombre:      ESP8266                                                 *
+*      COMPAÑÍA:    Universidad de Colima - Facultad de Telemática.          *
+*      CARRERA:     Ing. en Tecnologías de Internet                          *
+*                                                                            *
+*      uC:          ESP8266                                                  *
+*      Nombre:      ESP8266                                                  *
 *                                                                            *
 ******************************************************************************
 *                                                                            *
@@ -34,6 +39,6 @@ void setup( void ) {
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~CICLO INFINITO DE TRABAJO~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 void loop ( void ) {
   
-  cd.SerialEvent(); //Llamada al metodo SerialEvent de la libreria.
+  cd.SerialEvent(); //Llamada al metodo SerialEvent de la libreria libreria_metodos.h
 
 }

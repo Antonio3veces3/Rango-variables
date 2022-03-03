@@ -1,32 +1,29 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CLASES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-class class_datos {             // Nombre de la clase.     
-        
+class class_datos {               // Nombre de la clase.     
   public:                         // Variables públicas.
-    char txt;           // Recibe el numero del índice del menú.
-    String output;     //Variable para almacenar el rango de las variables
+    char txt;                     // Recibe el numero del índice del menú.
+    String output;                //Variable para almacenar el rango de las variables
     
   public:                         // Métodos públicos. 
    
     int unsigned_min (void);      //Metodo para obtener el minimo de variables sin signo
     int64_t get_min (int);        //Metodo para obtener el minimo de variables
-    uint64_t get_max (int);      //Metodo para obtener el máximo de variables sin signo
+    uint64_t get_max (int);       //Metodo para obtener el máximo de variables sin signo
 
-    void SerialEvent ( void );  //Metodo que lee la entrada del monitor
-    void printMenu ( void );    //Metodo para imprimir el menu
- 
-    
+    void SerialEvent ( void );    //Metodo que lee la entrada del monitor
+    void printMenu ( void );      //Metodo para imprimir el menu
 };
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MÉTODOS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-int64_t class_datos::get_min (int exponente){ //Calcula el minimo de variables
+int64_t class_datos::get_min (int exponente){ //Calcula el minimo de variables c/signo
   return pow(-2,exponente);
 }
 
-uint64_t class_datos::get_max (int exponente){ //Calcula el maximo de variables
+uint64_t class_datos::get_max (int exponente){ //Calcula el maximo de variables c/signo
   return pow(2,exponente) -1;
 }
 
-int class_datos::unsigned_min( void ){ //Calcula el minimo de variables de sin signo
+int class_datos::unsigned_min( void ){ //Calcula el minimo de variables de s/signo
   return 0;
 }
 
@@ -36,15 +33,15 @@ void class_datos::SerialEvent ( void ) {
     txt = Serial.read();          //Lee el puerto serial
     
     switch(txt){                 //Condicional para el texto de entrada
-      case '1':
-        Serial.println("int8_ t - Entero con signo de 1 byte");
-        output = "Rango de ";
-        output += get_min(7);
-        output += " a ";
-        output += get_max(7);
-        Serial.print(output);    
+      case '1':                  //Si se selecciona el 1, muestra el rango de la variable que corresponde en el menu.
+        Serial.println("int8_ t - Entero con signo de 1 byte"); //Imprime la descripcion del tipo de dato.
+        output = "Rango de ";    //Texto de salida
+        output += get_min(7);    //llama a la funcion get_min y le manda el 7 como exponente. concatena lo que retorna de la función
+        output += " a ";         //concatena la letra a 
+        output += get_max(7);    //llama a la funcion get_max y le manda el 7 como exponente. concatena lo que retorna de la función
+        Serial.print(output);    //Imprime el texto de salida con los rangos de valores.
         break;
-      case '2':
+      case '2':                  //Lo mismo aplica para todos los elementos del menú, solo va cambiando el exponente que se manda a las funciones
         Serial.println("uint8_ t - Entero sin signo de 1 byte"); 
         output = "Rango de ";
         output += unsigned_min();
@@ -132,6 +129,7 @@ void class_datos::SerialEvent ( void ) {
   }
 }
 //Metodo para crear el menu
+//Cada tipo de dato corresponde a un numero Hexadecimal del menú
 void class_datos::printMenu() {
   Serial.println("\nMENU:");
   Serial.println("int8_t   -> 1");
